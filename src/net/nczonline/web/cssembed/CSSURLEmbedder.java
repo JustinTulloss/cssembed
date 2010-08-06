@@ -321,10 +321,11 @@ public class CSSURLEmbedder {
                 
                 File file = new File(url);
                 
-                if (verbose && !file.isFile()){
-                    System.err.println("[INFO] Could not find file '" + file.getCanonicalPath() + "'.");
+                if (!file.isFile()){
+                    System.err.println("[WARNING] Could not find file '" + file.getCanonicalPath() + "'.");
+                    return originalUrl;
                 }                 
-                
+
                 DataURIGenerator.generate(new File(url), writer); 
             }
 
